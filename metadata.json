@@ -1,0 +1,6 @@
+{
+  "name": "Mbhewoo Labs",
+  "description": "Collaborative credibility forecasting platform for African biomedical and biotechnology research.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

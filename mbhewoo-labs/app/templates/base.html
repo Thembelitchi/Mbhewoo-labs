@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mbhewoo Labs{% endblock %}</title>
+    
+    <!-- Tailwind CSS (Play CDN for rapid prototyping in early MVP phase) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fbf6',
+                            100: '#dcf7ea',
+                            200: '#bbeed5',
+                            300: '#8adeb5',
+                            400: '#52c68e',
+                            500: '#2da872',
+                            600: '#20875c',
+                            700: '#1c6c4c',
+                            800: '#1b563f',
+                            900: '#174735',
+                            950: '#0b281f',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'SFMono-Regular', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- HTMX (for modern, asynchronous AJAX HTML swapping without full reloads) -->
+    <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
+    
+    <!-- AlpineJS (Optional helper for simple local client-side reactive components) -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    {% block head %}{% endblock %}
+</head>
+<body class="h-full text-slate-800 flex flex-col font-sans">
+
+    <!-- Header / Navigation Bar -->
+    <header class="border-b border-slate-200 bg-white">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex h-16 justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <!-- Elegant BioTech Lab Logo Mark -->
+                    <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-600 text-white font-mono font-bold text-lg tracking-wider shadow-sm">
+                        Mb
+                    </div>
+                    <div>
+                        <span class="text-xl font-bold tracking-tight text-slate-900">Mbhewoo Labs</span>
+                        <span class="hidden sm:inline-block ml-2 rounded-full bg-brand-100 px-2 py-0.5 text-xs font-semibold text-brand-800">Biotech MVP</span>
+                    </div>
+                </div>
+                
+                <nav class="flex items-center gap-6">
+                    <a href="/" class="text-sm font-medium text-slate-600 hover:text-brand-700 transition">Forecasting Markets</a>
+                    <a href="/health" class="text-sm font-medium text-slate-600 hover:text-brand-700 transition" hx-get="/health" hx-target="#health-status-badge" hx-swap="outerHTML">Health Status</a>
+                    <span id="health-status-badge" class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-800">
+                        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                        Service Live
+                    </span>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container Scaffold -->
+    <main class="flex-1 mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 w-full">
+        {% block content %}
+        <div class="text-center py-12">
+            <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">African Biotech Credibility Platform</h1>
+            <p class="mt-4 text-base text-slate-500">Pooling expert judgment on clinical trials, genomics, and bioprocess reproducibility.</p>
+        </div>
+        {% endblock %}
+    </main>
+
+    <!-- Simple, Clean Footer conforming to professional layout guide -->
+    <footer class="border-t border-slate-200 bg-white py-6 mt-12">
+        <div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+            <p class="text-xs text-slate-400 font-mono">
+                &copy; {{ current_year | default(2026) }} Mbhewoo Labs. All rights reserved. Built with FastAPI, Jinja2, HTMX, and Tailwind.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
