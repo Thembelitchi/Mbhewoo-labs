@@ -11,9 +11,21 @@ from app.models.forecaster import (
     Forecaster,
     ForecasterTier,
 )
+from app.models.market import (
+    DEFAULT_LIQUIDITY_PARAM_B,
+    Market,
+    MarketDomain,
+    MarketOutcome,
+    MarketStatus,
+)
 
 __all__ = [
     "STARTER_SEED_ENDOWMENT",
     "Forecaster",
     "ForecasterTier",
+    "DEFAULT_LIQUIDITY_PARAM_B",
+    "Market",
+    "MarketDomain",
+    "MarketOutcome",
+    "MarketStatus",
 ]
