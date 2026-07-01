@@ -13,7 +13,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from app.config import settings
-from app.database import close_neo4j, init_neo4j
+from app.database import close_neo4j_driver, get_neo4j_driver
 from app.routes import health
 
 
@@ -22,16 +22,15 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """
     Runs once at startup (before yield) and once at shutdown (after yield).
 
-    Skip Neo4j init when the URI is not yet configured — allows the app to
-    start during early development before AuraDB credentials are in place.
+    When a Neo4j URI is configured we construct the driver eagerly at startup
+    (construction does not connect), and always close it on shutdown.
     """
     if settings.neo4j_uri:
-        await init_neo4j()
+        get_neo4j_driver()
 
     yield
 
-    if settings.neo4j_uri:
-        await close_neo4j()
+    await close_neo4j_driver()
 
 
 app = FastAPI(

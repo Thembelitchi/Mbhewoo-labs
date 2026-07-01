@@ -24,10 +24,13 @@ class Settings(BaseSettings):
     # ── Postgres (Supabase) ──────────────────────────────────────────────────
     database_url: str = Field(default="")
 
-    # ── Neo4j (AuraDB) ───────────────────────────────────────────────────────
+    # ── Neo4j (AuraDB / Sandbox) ─────────────────────────────────────────────
+    # Works with any scheme (bolt://, neo4j://, neo4j+s://) — the driver picks
+    # transport from the URI, so switching Sandbox → AuraDB is a .env change.
     neo4j_uri: str = Field(default="")
     neo4j_username: str = Field(default="neo4j")
     neo4j_password: str = Field(default="")
+    neo4j_database: str = Field(default="neo4j")
 
     # ── Feature flags ────────────────────────────────────────────────────────
     # When True, synthetic forecasters and demo data are active.
