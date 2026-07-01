@@ -47,3 +47,7 @@ alembic/versions/__pycache__/
 # Uploads / temp
 uploads/
 tmp/
+
+# Node (archived AI Studio prototype)
+node_modules/
+docs/ai-studio-prototype/dist/

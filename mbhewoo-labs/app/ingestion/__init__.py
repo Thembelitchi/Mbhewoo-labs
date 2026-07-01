@@ -1,1 +1,0 @@
-# External index ingestion package
