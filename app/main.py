@@ -48,3 +48,14 @@ templates = Jinja2Templates(directory="app/templates")
 
 # ── Routers ──────────────────────────────────────────────────────────────────
 app.include_router(health.router)
+
+
+@app.get("/")
+async def root() -> dict[str, str]:
+    """Landing greeting with a pointer to the interactive API docs."""
+    return {
+        "message": "Welcome to Mbhewoo Labs — collaborative credibility forecasting "
+        "for African biomedical and biotechnology research.",
+        "docs": "/docs",
+        "health": "/health",
+    }
